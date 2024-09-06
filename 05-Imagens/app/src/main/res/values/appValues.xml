@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- string Projeto -->
+
+    <string name="appTextotitle">JOKENPO PLAY</string>
+    <string name="appTextoresult">Clique na sua opção</string>
+    <string name="appJogowin">Parabéns ganhou</string>
+    <string name="appJogogameover">Perdeu manezao</string>
+
+    <!-- Color projeto -->
+    <color name="fonte1">#FFFFFF</color>
+    <color name="fonte2">#940500</color>
+    <color name="fonte3">#006622</color>
+
+</resources>
