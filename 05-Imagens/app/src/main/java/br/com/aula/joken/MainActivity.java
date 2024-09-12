@@ -3,7 +3,6 @@ package br.com.aula.joken;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -28,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     public void selectPaper(View view) {
         this.selectOption("papel");
     }
@@ -41,48 +39,82 @@ public class MainActivity extends AppCompatActivity {
         this.selectOption("tesoura");
     }
 
+    private int iaWins;
+    private int playerWins;
+    private int consecutiveWins;
+
     public void selectOption(String selectOption) {
+
         ImageView resultImg = findViewById(R.id.imagemPadrao);
         TextView resultTxt = findViewById(R.id.textResult);
 
+        // Lógica da escolha pela Máquina
+        int number = new Random().nextInt(3);
+        String[] option = {"pedra", "papel", "tesoura"};
+        String optionIA = option[number];
 
-        // Lógica da escola pela Maquina
-            int number = new Random().nextInt(3);
-            String [] option = {"pedra", "papel", "tesoura"};
-            String optionIA = option[number];
-
-        // Logica mudança de figura de acordo com a oção
+        // Lógica de mudança de imagem de acordo com a opção
         switch (optionIA) {
             case "pedra":
-                    resultImg.setImageResource(R.drawable.pedra);
-                    break;
+                resultImg.setImageResource(R.drawable.pedra);
+                break;
             case "papel":
-                    resultImg.setImageResource(R.drawable.papel);
-                    break;
-
+                resultImg.setImageResource(R.drawable.papel);
+                break;
             case "tesoura":
-                    resultImg.setImageResource(R.drawable.tesoura);
-                    break;
-
+                resultImg.setImageResource(R.drawable.tesoura);
+                break;
         }
 
-        // Logica do Jokenpo
+        // Lógica do Jokenpo (com Boolean)
+        boolean tesouraEPapel = optionIA == "tesoura" && selectOption == "papel";
+        boolean papelEPedra = optionIA == "papel" && selectOption == "pedra";
+        boolean pedraETesoura = optionIA == "pedra" && selectOption == "tesoura";
 
-        if (
-                (optionIA == "tesoura" && selectOption == "papel") ||
-                        (optionIA == "papel" && selectOption == "pedra") ||
-                        (optionIA == "pedra" && selectOption == "tesoura")
+        boolean papelETesoura = optionIA == "papel" && selectOption == "tesoura";
+        boolean pedraEPapel = optionIA == "pedra" && selectOption == "papel";
+        boolean tesouraEPedra = optionIA == "tesoura" && selectOption == "pedra";
 
-        ) {
+        if (tesouraEPapel || papelEPedra || pedraETesoura) {
+            iaWins++;
             resultTxt.setText(R.string.appJogogameover);
-        } else if (
-                (optionIA == "papel" && selectOption == "tesoura") ||
-                        (optionIA == "pedra" && selectOption == "papel") ||
-                        (optionIA == "tesoura" && selectOption == "pedra")
+            consecutiveWins = 0;
 
-        ) {
+        } else if (papelETesoura || pedraEPapel || tesouraEPedra) {
+            playerWins++;
             resultTxt.setText(R.string.appJogowin);
+            consecutiveWins = 0;
         }
 
+
+        TextView placarTxt = findViewById(R.id.textBestOf3);
+        placarTxt.setText("Placar - Você: " + playerWins + " IA: " + iaWins);
+
+
+        if (playerWins == 3) {
+            resultTxt.setText("Você venceu a melhor de 3");
+            playerWins = 0;
+            iaWins = 0;
+        } else if (iaWins == 3) {
+            resultTxt.setText("Você perdeu a melhor de 3");
+            playerWins = 0;
+            iaWins = 0;
+        }
+    }
+
+    public void resetGame(View view) {
+        ImageView resultImg = findViewById(R.id.imagemPadrao);
+        resultImg.setImageResource(R.drawable.padrao);
+
+        TextView resultTxt = findViewById(R.id.textResult);
+        resultTxt.setText("Faça sua escolha!");
+
+        playerWins = 0;
+        iaWins = 0;
+        consecutiveWins = 0;
+
+
+        TextView placarTxt = findViewById(R.id.textBestOf3);
+        placarTxt.setText("Placar - Você: 0 IA: 0");
     }
 }
