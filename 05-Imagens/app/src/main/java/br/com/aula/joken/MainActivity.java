@@ -83,11 +83,14 @@ public class MainActivity extends AppCompatActivity {
         } else if (papelETesoura || pedraEPapel || tesouraEPedra) {
             playerWins++;
             resultTxt.setText(R.string.appJogowin);
-            consecutiveWins = 0;
+            consecutiveWins++;
         }
 
 
         TextView placarTxt = findViewById(R.id.textBestOf3);
+        TextView countWin = findViewById(R.id.textWinCount);
+
+        countWin.setText("Vitórias consecutivas: " + consecutiveWins);
         placarTxt.setText("Placar - Você: " + playerWins + " IA: " + iaWins);
 
 
