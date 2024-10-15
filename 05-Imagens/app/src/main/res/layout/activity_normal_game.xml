@@ -26,7 +26,7 @@
 
     <!-- Área de Resultado -->
     <TextView
-        android:id="@+id/textResult"
+        android:id="@+id/textResult_normalActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Faça sua escolha!"
@@ -40,34 +40,36 @@
 
     <!-- Imagem do Resultado -->
     <ImageView
-        android:id="@+id/imagemPadrao"
+        android:id="@+id/imagemPadrao_normalActivity"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:layout_constraintTop_toBottomOf="@id/textResult"
+        app:layout_constraintTop_toBottomOf="@id/textResult_normalActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
         app:srcCompat="@drawable/padrao" />
+
+
     <TextView
-        android:id="@+id/textBestOf3"
+        android:id="@+id/textWinCount_normalActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Placar - Você: 0  IA: 0"
+        android:layout_marginTop="44dp"
+        android:text="Vitórias consecutivas: 0"
         android:textColor="@color/fonte1"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/restartButton_normalActivity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagemPadrao"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintTop_toBottomOf="@id/imagemPadrao_normalActivity"
+        app:layout_constraintVertical_bias="0.064" />
+
 
     <Button
-        android:id="@+id/restartButton"
+        android:id="@+id/restartButton_normalActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:onClick="resetGame"
         android:text="Reiniciar"
         android:textSize="20sp"
@@ -75,8 +77,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textBestOf3"
-        app:layout_constraintVertical_bias="0.126" />
+        app:layout_constraintTop_toBottomOf="@+id/imagemPadrao_normalActivity"
+        app:layout_constraintVertical_bias="0.252" />
 
     <ImageView
         android:id="@+id/imagemPedra"
@@ -84,7 +86,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/pedra"
-        app:layout_constraintTop_toBottomOf="@id/restartButton"
+        app:layout_constraintTop_toBottomOf="@id/restartButton_normalActivity"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="32dp"
         android:layout_marginStart="32dp" />
@@ -95,7 +97,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/papel"
-        app:layout_constraintTop_toBottomOf="@id/restartButton"
+        app:layout_constraintTop_toBottomOf="@id/restartButton_normalActivity"
         app:layout_constraintStart_toEndOf="@id/imagemPedra"
         app:layout_constraintEnd_toStartOf="@id/imagemTesoura"
         android:layout_marginStart="32dp"
@@ -108,13 +110,13 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/tesoura"
-        app:layout_constraintTop_toBottomOf="@id/restartButton"
+        app:layout_constraintTop_toBottomOf="@id/restartButton_normalActivity"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp" />
 
     <Button
-        android:id="@+id/buttonHome_bestOf3"
+        android:id="@+id/buttonHome_normalActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Home"
